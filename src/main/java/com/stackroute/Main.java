@@ -19,10 +19,14 @@ public class Main {
     ApplicationContext ctx =
       new AnnotationConfigApplicationContext(AppConfig.class);
 
-    Movie movie1 = ctx.getBean(Movie.class);
-
+    Movie movie1 = (Movie)ctx.getBean("movie1");
+    Movie movie2 = (Movie)ctx.getBean("movie1");
     //prints actor details Actor1 male 30
     movie1.printActor();
+    System.out.println(movie1==movie2);
+
+    Movie moviePrototype = (Movie)ctx.getBean("moviePrototype");
+    System.out.println(moviePrototype==movie1);
 
 
 	}
