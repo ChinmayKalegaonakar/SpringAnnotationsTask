@@ -1,5 +1,6 @@
 package com.stackroute;
 
+import com.stackroute.demo.BeanLifecycleDemoBean;
 import com.stackroute.domain.Actor;
 import com.stackroute.domain.Movie;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
@@ -20,11 +21,9 @@ public class Main {
     ApplicationContext ctx =
       new AnnotationConfigApplicationContext(AppConfig.class);
 
-    Movie movie1 = (Movie)ctx.getBean("movie1");
-    Actor actor1 = (Actor)ctx.getBean("actor1");
-    movie1.printActor();
-    System.out.println("Movie getBeanName "+movie1.getBeanName());
-    System.out.println("Actor getBeanName "+actor1.getBeanName());
+    BeanLifecycleDemoBean bldb = (BeanLifecycleDemoBean) ctx.getBean(BeanLifecycleDemoBean.class);
+    bldb.customInit();
+    bldb.customDestroy();
 
 
 
