@@ -1,6 +1,7 @@
 package com.stackroute;
 
 import com.stackroute.demo.BeanLifecycleDemoBean;
+import com.stackroute.demo.BeanPostProcessorDemoBean;
 import com.stackroute.domain.Actor;
 import com.stackroute.domain.Movie;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
@@ -22,9 +23,9 @@ public class Main {
       new AnnotationConfigApplicationContext(AppConfig.class);
 
     BeanLifecycleDemoBean bldb = (BeanLifecycleDemoBean) ctx.getBean(BeanLifecycleDemoBean.class);
-    bldb.customInit();
-    bldb.customDestroy();
-
+    BeanPostProcessorDemoBean bppdb =new BeanPostProcessorDemoBean();
+    bppdb.postProcessBeforeInitialization(bldb,BeanLifecycleDemoBean.class.toString());
+    bppdb.postProcessAfterInitialization(bldb,BeanLifecycleDemoBean.class.toString());
 
 
 	}
