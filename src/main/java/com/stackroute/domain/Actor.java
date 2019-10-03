@@ -1,12 +1,14 @@
 package com.stackroute.domain;
 
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Actor {
+public class Actor implements BeanNameAware {
 
   private String name;
   private String gender;
   private int age;
+  private String beanName;
 
 
   public Actor(String name, String gender, int age) {
@@ -40,5 +42,12 @@ public class Actor {
   }
 
 
+  public String getBeanName() {
+    return beanName;
+  }
 
+  @Override
+  public void setBeanName(String name) {
+    beanName = name;
+  }
 }

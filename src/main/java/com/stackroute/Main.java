@@ -1,5 +1,6 @@
 package com.stackroute;
 
+import com.stackroute.domain.Actor;
 import com.stackroute.domain.Movie;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -20,13 +21,11 @@ public class Main {
       new AnnotationConfigApplicationContext(AppConfig.class);
 
     Movie movie1 = (Movie)ctx.getBean("movie1");
-    Movie movie2 = (Movie)ctx.getBean("movie1");
-    //prints actor details Actor1 male 30
+    Actor actor1 = (Actor)ctx.getBean("actor1");
     movie1.printActor();
-    System.out.println(movie1==movie2);
+    System.out.println("Movie getBeanName "+movie1.getBeanName());
+    System.out.println("Actor getBeanName "+actor1.getBeanName());
 
-    Movie moviePrototype = (Movie)ctx.getBean("moviePrototype");
-    System.out.println(moviePrototype==movie1);
 
 
 	}

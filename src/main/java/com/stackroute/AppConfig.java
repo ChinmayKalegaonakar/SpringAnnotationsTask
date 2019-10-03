@@ -20,7 +20,7 @@ public class AppConfig {
     return new Movie(actorPrototype());
   }
 
-  @Bean
+  @Bean(name = "actor1")
   public Actor actor1(){
     return new Actor("Actor1","male",30);
   }
